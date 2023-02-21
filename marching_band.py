@@ -22,22 +22,22 @@ wait_ready_sensors()
 
 def play_sound1():
     sound1 = Sound(duration=1, pitch="A1", volume=60)
-    pass
+    sound1.play()
 
 
 def play_sound2():
     sound2 = Sound(duration=1, pitch="A2", volume=60)
-    pass
+    sound2.play()
 
 
 def play_sound3():
     sound3 = Sound(duration=1, pitch="A3", volume=60)
-    pass
+    sound3.play()
 
 
 def play_sound4():
     sound4 = Sound(duration=1, pitch="A4", volume=60)
-    pass
+    sound4.play()
 
 
 def start_drum():
