@@ -1,43 +1,89 @@
-from utils.brick import wait_ready_sensors, TouchSensor
-from utils import sound
+from utils.brick import wait_ready_sensors, TouchSensor, Motor
+from utils import Sound
 from time import sleep
 
-touch1 = TouchSensor(1)
-touch2 = TouchSensor(2)
-touch3 = TouchSensor(3)
-enter = TouchSensor(4)
-SOUND1 = sound.Sound(duration=0.3, pitch="A1", volume=60)
-SOUND2 = sound.Sound(duration=0.3, pitch="A2", volume=60)
-SOUND3 = sound.Sound(duration=0.3, pitch="A3", volume=60)
-SOUND4 = sound.Sound(duration=0.3, pitch="A4", volume=60)
+
+###############################
+### Global I/O declarations ###
+###############################
+
+touch1 = TouchSensor(1)     # Sensor port 1
+touch2 = TouchSensor(2)     # Sensor port 2
+touch3 = TouchSensor(3)     # Sensor port 3
+enter = TouchSensor(4)      # Sensor port 4
+motor = Motor("A")          # Motor port A
 
 wait_ready_sensors()
 
 
+######################
+### Robot commands ###
+######################
+
+def play_sound1():
+    sound1 = Sound(duration=1, pitch="A1", volume=60)
+    pass
+
+
+def play_sound2():
+    sound2 = Sound(duration=1, pitch="A2", volume=60)
+    pass
+
+
+def play_sound3():
+    sound3 = Sound(duration=1, pitch="A3", volume=60)
+    pass
+
+
+def play_sound4():
+    sound4 = Sound(duration=1, pitch="A4", volume=60)
+    pass
+
+
+def start_drum():
+    pass
+
+
+def stop_drum():
+    pass
+
+
+def stop_all():
+    no_tone = Sound(duration=1, pitch="A1", volume=0)
+    no_tone.play()
+    stop_drum()
+
+
+#################
+### Main loop ###
+#################
 
 while True:
+    # While Enter TS is not pressed, do nothing
     if enter.get_raw_value() == 0:
         continue
-    command = str(touch3.get_raw_value()) + str(touch2.get_raw_value()) + str(touch1.get_raw_value())
-    #Change the content of the if statements during subsystem 2/3 development (Ralph and Eimy this is for you)
+
+    # Read command value from TS and concatenate in a 3 bit string
+    command = str(touch3.get_raw_value()) + \
+        str(touch2.get_raw_value()) + str(touch1.get_raw_value())
+
+    # Switch statement to determine which command to execute
     if command == "000":
-        print("1")
+        play_sound1()
     elif command == "001":
-        print("2")
+        play_sound2()
     elif command == "010":
-        print("3")
+        play_sound3()
     elif command == "011":
-        print("4")
+        play_sound4()
     elif command == "100":
-        print("Start Drum")    
+        start_drum()
     elif command == "101":
-        print("Stop Drum")
+        stop_drum()
     elif command == "110":
         pass
     elif command == "111":
-        print("STOP!")
+        stop_all()
+
+    # Add a delay to slow down processor speed
     sleep(0.3)
-    
-
-
-
