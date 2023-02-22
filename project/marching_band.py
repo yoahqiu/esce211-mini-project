@@ -92,21 +92,21 @@ while True:
         play_sound3()
     elif command == "011":
         play_sound4()
-    elif command == "100":
-        if (not drum_on):
+    elif command == "100": #toggle start/stop drum
+        if (not drum_on): # if drum is off, turn on
             motor.set_power(0)
             motor.set_limits(power=50)
             motor.reset_encoder()
             drum_on = True
-        else:
+        else:               # if drum is on, turn off
             drum_on = False
             motor.set_position(0)
             motor.set_power(0)
-    elif command == "101":
+    elif command == "101": # no instruction
         pass
-    elif command == "110":
+    elif command == "110": # no instruction
         pass
-    elif command == "111":
+    elif command == "111": #emergency stop button
         drum_on = False
         motor.set_position(0)
         motor.set_power(0)
