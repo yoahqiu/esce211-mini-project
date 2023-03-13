@@ -1,4 +1,4 @@
-# esce211-mini-project
+# esce211-final-project
 
-## How to use marchin_band.py
+## Automated delivery robot
 
