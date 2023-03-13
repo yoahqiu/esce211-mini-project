@@ -12,18 +12,18 @@ from statistics import mean, stdev
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
-motorL = Motor("A")          # Motor port A (left)
+motorL = Motor("C")          # Motor port A (left)
 motorR = Motor("B")          # Motor port B (right)
 colorSensorPath = EV3ColorSensor(1)   # Color sensor 
 
 wait_ready_sensors()
 
 # variables to be calibrated
-tresholdBlue = 0.3
-tresholdRed = 0.8
+tresholdBlue = 0.5
+tresholdRed = 0.85
 tresholdGreen = 0.8
-normalDps = 90
-slowDownFactor = 0.8
+normalDps = 300
+slowDownFactor = 0.55
 
 motorL.set_dps(normalDps)
 motorR.set_dps(normalDps)
@@ -35,24 +35,35 @@ while (True):
 
     #normalize values between 0 and 1
     denominator = sqrt(r ** 2 + g ** 2 + b ** 2)
+    if (denominator <= 0):
+        denominator = 1
     r = r/denominator #red will likely be the strongest color
     g = g/denominator
     b = b/denominator #blue will likely appear as black
 
+    print([r, g, b])
     #if detect too much blue, turn left
     if (b > tresholdBlue):
-        motorL.set_dps(motorL.get_dps * slowDownFactor)
-        motorR.set_dps(normalDps)
+        motorR.set_dps(motorL.get_dps() * slowDownFactor)
+        motorL.set_dps(normalDps)
 
     #if detect too red, turn right
     if (r > tresholdRed):
+        motorR.set_dps(normalDps)
+        motorL.set_dps(motorR.get_dps() * slowDownFactor)
+
+    #if detect green, launch cube delivery routine
+    if (g > tresholdGreen):
+        print("detect green")
+        
+    #if white, go straight
+    if (r > 0.55 and r < 0.80 and g > 0.55 and g < 0.80 and b > 0.20 and b < 0.60):
         motorL.set_dps(normalDps)
-        motorR.set_dps(motorR.get_dps * slowDownFactor)
+        motorR.set_dps(normalDps)
 
-    #if detect green, launch cube delivery routine 
-
-    sleep(0.3)
+    sleep(0.1)
 
 
 # TODO: explore more gradual control loops where a steering vector is changed
 # TODO: in lab, record data in test document + take pictures
+# TODO: button on/off
