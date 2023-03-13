@@ -7,6 +7,11 @@ from ast import literal_eval
 from math import sqrt, e, pi
 from statistics import mean, stdev
 
+motorPusher = Motor("A")        # Motor port A
+motorConvBelt = Motor("D")        # Motor port D
+
+wait_ready_sensors()
+
 def startDeliveryRoutine():
     in_delivery_routine = False
 

@@ -1,3 +1,5 @@
+""" This code is deprecated and its feature is now included in padDetection """
+
 from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
 from utils.sound import Sound
 from time import sleep
@@ -12,8 +14,10 @@ from statistics import mean, stdev
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
-motorL = Motor("C")          # Motor port A (left)
+motorL = Motor("C")          # Motor port C (left)
 motorR = Motor("B")          # Motor port B (right)
+motorPusher = Motor("A")        # Motor port A
+motorConvBelt = Motor("D")        # Motor port D
 colorSensorPath = EV3ColorSensor(1)   # Color sensor 
 
 wait_ready_sensors()
