@@ -1,29 +1,34 @@
+
+""" Path tracking test file """
+
 from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
 from utils.sound import Sound
 from time import sleep
 from constants import *
 from colorDetectionService import *
+from pathTrackingService import *
 
-
-""" File meant for testing pad color detection and tuning hyperparameter.
-"""
+#1. Identify the color mix
+#2. Change left/right steering vector 
+#3. Adjust motor speeds
 
 motorL = Motor("C")          # Motor port C (left)
 motorR = Motor("B")          # Motor port B (right)
-colorSensorPath = EV3ColorSensor(1)   # Color sensor main
-colorSensorPad = EV3ColorSensor(3)
+colorSensorPath = EV3ColorSensor(1)   # Color sensor 
 
 wait_ready_sensors()
 
 
-while (True):
- 
-    pathRBG = getRBG(colorSensorPath)
-    padRBG = getRBG(colorSensorPad)
-    #print(pathRBG)
-    
-    print(padRBG)
-    print(getColorDetected(padRBG))
+motorL.set_dps(normalDps)
+motorR.set_dps(normalDps)
 
-    sleep(0.5)
+while (True):
+
+    pathRBG = getRBG(colorSensorPath)
+    sColor = getColorDetected(pathRBG)
+    
+    adjustHeading(sColor, motorL, motorR)
+
+    sleep(0.1)
+
 
