@@ -27,7 +27,7 @@ oR1 = 0.90
 oR2 = 0.99
 oG1 = 0.20
 oG2 = 0.30
-oB1 = 0.10
+oB1 = 0.00
 oB2 = 0.20
 
 #color white constants
