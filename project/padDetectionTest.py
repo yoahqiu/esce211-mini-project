@@ -7,7 +7,6 @@ from ast import literal_eval
 from math import sqrt, e, pi
 from statistics import mean, stdev
 
-import cubeDelivery as cd
 
 """ File meant for testing pad color detection and tuning hyperparameter.
 """
