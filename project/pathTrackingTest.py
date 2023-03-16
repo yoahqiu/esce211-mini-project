@@ -19,8 +19,7 @@ colorSensorPath = EV3ColorSensor(1)   # Color sensor
 wait_ready_sensors()
 
 
-motorL.set_dps(normalDps)
-motorR.set_dps(normalDps)
+startMotors(motorL, motorR)
 
 while (True):
 

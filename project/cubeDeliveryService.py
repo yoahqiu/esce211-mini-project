@@ -1,42 +1,31 @@
-from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
-from utils.sound import Sound
 from time import sleep
 
 
-from ast import literal_eval
-from math import sqrt, e, pi
-from statistics import mean, stdev
 
-motorPusher = Motor("A")        # Motor port A
-motorConvBelt = Motor("D")        # Motor port D
-
-wait_ready_sensors()
-
-def startDeliveryRoutine():
-    in_delivery_routine = False
-
-
-
-    return in_delivery_routine
-
-def deliver(color):
+def deliver(color, motorPusher, motorConvBelt):
 
     if color == "yellow":
+        print("deliver yellow")
         pass
 
     if color == "purple":
+        print("deliver purple")
         pass
 
     if color == "orange":
+        print("deliver orange")
         pass
 
     if color == "blue":
+        print("deliver blue")
         pass
 
     if color == "red":
+        print("deliver red")
         pass
 
     if color == "green":
+        print("deliver green")
         pass
 
     

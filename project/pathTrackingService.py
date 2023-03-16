@@ -1,5 +1,13 @@
 from constants import *
 
+def startMotors(motorL, motorR):
+    motorL.set_dps(normalDps)
+    motorR.set_dps(normalDps)
+
+def stopMotors(motorL, motorR):
+    motorL.set_dps(0)
+    motorR.set_dps(0)
+
 def adjustHeading(sColor, motorL, motorR):
 
     #if detect too much blue, turn left
