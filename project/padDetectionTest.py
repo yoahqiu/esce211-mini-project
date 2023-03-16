@@ -1,6 +1,7 @@
 from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
 from utils.sound import Sound
 from time import sleep
+from constants import *
 
 
 from ast import literal_eval
@@ -19,11 +20,6 @@ colorSensorPad = EV3ColorSensor(3)
 wait_ready_sensors()
 
 # variables to be calibrated
-tresholdBlue = 0.5
-tresholdRed = 0.85
-tresholdGreen = 0.8
-normalDps = 300
-slowDownFactor = 0.55
 in_delivery_routine = False
 
 
@@ -44,15 +40,15 @@ def getRBG(colorsensor):
 def getColorDetected(aRGB):
     r, g, b = aRGB[0], aRGB[1], aRGB[2]
     #yellow
-    if (r > 0.70 and r < 0.80 and g > 0.60 and g < 0.70 and b > 0.00 and b < 0.10):
+    if (r > yR1 and r < yR2 and g > yG1 and g < yG2 and b > yB1 and b < yB2):
         return "yellow"
     
     #purple
-    if (r > 0.90 and r < 0.99 and g > 0.10 and g < 0.20 and b > 0.10 and b < 0.20):
+    if (r > pR1 and r < pR2 and g > pG1 and g < pG2 and b > pB1 and b < pB2):
         return "purple"
     
     #orange
-    if (r > 0.90 and r < 0.99 and g > 0.20 and g < 0.30 and b > 0.00 and b < 0.10):
+    if (r > oR1 and r < oR2 and g > oG1 and g < oG2 and b > oB1 and b < oB2):
         return "orange"
     
     #if detect too much blue, turn left
@@ -68,7 +64,7 @@ def getColorDetected(aRGB):
         return "detect green"
         
     #if white, go straight
-    elif (r > 0.55 and r < 0.80 and g > 0.55 and g < 0.80 and b > 0.20 and b < 0.60):
+    elif (r > wR1 and r < wR2 and g > wG1 and g < wG2 and b > wB1 and b < wB2):
         return "white"
 
     return "none"

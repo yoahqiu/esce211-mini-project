@@ -3,6 +3,7 @@
 from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
 from utils.sound import Sound
 from time import sleep
+from constants import *
 
 
 from ast import literal_eval
@@ -22,12 +23,6 @@ colorSensorPath = EV3ColorSensor(1)   # Color sensor
 
 wait_ready_sensors()
 
-# variables to be calibrated
-tresholdBlue = 0.5
-tresholdRed = 0.85
-tresholdGreen = 0.8
-normalDps = 300
-slowDownFactor = 0.55
 
 motorL.set_dps(normalDps)
 motorR.set_dps(normalDps)
