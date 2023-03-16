@@ -14,24 +14,28 @@ motorR = Motor("B")          # Motor port B (right)
 motorPusher = Motor("A")        # Motor port A
 motorConvBelt = Motor("D")        # Motor port D
 colorSensorPath = EV3ColorSensor(1)   # Color sensor main
-colorSensorPad = EV3ColorSensor(4)
+colorSensorPad = EV3ColorSensor(3)
 
 wait_ready_sensors()
 
-
+print("sensors ready")
 startMotors(motorL, motorR)
+print("all forward!")
 
 while (True):
 
-    pathRBG = getRBG(colorSensorPath)
-    sColorPath = getColorDetected(pathRBG)
+    pathRGB = getRBG(colorSensorPath)
+    sColorPath = getColorDetected(pathRGB)
+    print("pathRGB: " + str(pathRGB))
 
-    padRBG = getRBG(colorSensorPad)
-    sColorPad = getColorDetected(padRBG)
+    padRGB = getRBG(colorSensorPad)
+    sColorPad = getColorDetected(padRGB)
+    print("padRGB: " + str(padRGB))
     
     adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
     if (sColorPath == "green"): #delivery routine
+        print("delivery routine")
         stopMotors(motorL, motorR)
         deliver(sColorPad, motorPusher, motorConvBelt)
         startMotors(motorL, motorR)
