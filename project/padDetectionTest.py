@@ -18,8 +18,8 @@ wait_ready_sensors()
 
 while (True):
  
-    pathRBG = getRBG(colorSensorPath)
-    padRBG = getRBG(colorSensorPad)
+    pathRBG = getRGB(colorSensorPath)
+    padRBG = getRGB(colorSensorPad)
     #print(pathRBG)
     
     print(padRBG)

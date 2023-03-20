@@ -4,7 +4,7 @@ from ast import literal_eval
 from math import sqrt, e, pi
 from statistics import mean, stdev
 
-def getRBG(colorsensor):
+def getRGB(colorsensor):
     aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
     r, g, b = aColors[0], aColors[1], aColors[2]
 

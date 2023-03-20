@@ -23,7 +23,7 @@ startMotors(motorL, motorR)
 
 while (True):
 
-    pathRBG = getRBG(colorSensorPath)
+    pathRBG = getRGB(colorSensorPath)
     sColor = getColorDetected(pathRBG)
     
     adjustHeading(sColor, motorL, motorR)
