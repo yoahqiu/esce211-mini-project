@@ -1,7 +1,7 @@
 
 """ Path tracking test file """
 
-from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
+from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor, reset_brick
 from utils.sound import Sound
 from time import sleep
 from constants import *
@@ -21,15 +21,19 @@ wait_ready_sensors()
 
 startMotors(motorL, motorR)
 
-while (True):
+try:
+    while (True):
 
-    pathRGB = getRGB(colorSensorPath)
-    sColor = getColorDetected(pathRGB)
-    print(pathRGB)
-    print(getColorDetected(pathRGB))
+        pathRGB = getRGB(colorSensorPath)
+        sColor = getColorDetected(pathRGB)
+        print(pathRGB)
+        print(getColorDetected(pathRGB))
     
-    adjustHeading(sColor, motorL, motorR)
+        adjustHeading(sColor, motorL, motorR)
 
-    sleep(0.1)
+        sleep(0.1)
+except BaseException:
+    reset_brick()
+
 
 
