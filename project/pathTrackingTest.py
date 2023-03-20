@@ -14,7 +14,8 @@ from pathTrackingService import *
 
 motorL = Motor("C")          # Motor port C (left)
 motorR = Motor("B")          # Motor port B (right)
-colorSensorPath = EV3ColorSensor(1)   # Color sensor 
+colorSensorPath = EV3ColorSensor(1) # Color sensor 
+emergencyStop = TouchSensor(2)   
 
 wait_ready_sensors()
 
@@ -30,6 +31,8 @@ try:
         print(getColorDetected(pathRGB))
     
         adjustHeading(sColor, motorL, motorR)
+        if emergencyStop.is_pressed():
+            raise BaseException
 
         sleep(0.1)
 except BaseException:
