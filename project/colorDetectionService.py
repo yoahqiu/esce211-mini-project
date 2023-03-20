@@ -42,7 +42,7 @@ def getColorDetected(aRGB):
 
     #if detect green, launch cube delivery routine
     elif (g > tresholdGreen):
-        return "detect green"
+        return "green"
         
     #if white, go straight
     elif (r > wR1 and r < wR2 and g > wG1 and g < wG2 and b > wB1 and b < wB2):
