@@ -19,7 +19,7 @@ wait_ready_sensors()
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
-initDeliverySystem()
+initDeliverySystem(motorPusher, motorConvBelt)
 
 try:
         padRGB = getRGB(colorSensorPad)
@@ -33,7 +33,8 @@ try:
         
         raise BaseException
 
-except BaseException:
+except (BaseException) as err:
+    print(err)
     reset_brick()
 
 
