@@ -1,32 +1,23 @@
 from time import sleep
 
+distances = {
+    "red" : 0,
+    "orange" : 40,
+    "yellow" : 80,
+    "green" : 120,
+    "blue" : 160,
+    "purple" : 200
+}
 
+def initDeliverySystem(motorPusher, motorConvBelt):
+    motorPusher.reset_encoder()
+    motorConvBelt.reset_encoder()
 
 def deliver(color, motorPusher, motorConvBelt):
-
-    if color == "red":
-        print("deliver red")
-        pass
-
-    if color == "orange":
-        print("deliver orange")
-        pass
-
-    if color == "yellow":
-        print("deliver yellow")
-        pass
-
-    if color == "green":
-        print("deliver green")
-        pass
-
-    if color == "blue":
-        print("deliver blue")
-        pass
-
-    if color == "purple":
-        print("deliver purple")
-        pass
+    motorConvBelt.set_position(distances[color])
+    motorPusher.set_position(90)
+    sleep(1)
+    motorPusher.set_position(0)
 
 
     

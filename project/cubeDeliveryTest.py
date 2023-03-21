@@ -19,6 +19,8 @@ wait_ready_sensors()
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
+initDeliverySystem()
+
 try:
         padRGB = getRGB(colorSensorPad)
         sColor = getColorDetected(padRGB)
@@ -35,13 +37,5 @@ except BaseException:
     reset_brick()
 
 
-
-
-
-
-
-motorConvBelt.set_dps(-200)
-sleep(0.5)
-motorConvBelt.set_dps(0)
 
 
