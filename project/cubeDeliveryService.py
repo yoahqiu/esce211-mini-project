@@ -1,15 +1,14 @@
 from time import sleep
 
 distances = {
+    "relativeDistance" : 0,
     "red" : 0,
-    "orange" : 100,
-    "yellow" : 200,
-    "green" : 300,
-    "blue" : 400,
-    "purple" : 500
+    "orange" : 1,
+    "yellow" : 2,
+    "green" : 3,
+    "blue" : 4,
+    "purple" : 5
 }
-
-relativeDistance = 0
 
 def initDeliverySystem(motorPusher, motorConvBelt):
     offset = motorPusher.get_position()
@@ -20,9 +19,11 @@ def initDeliverySystem(motorPusher, motorConvBelt):
 
 def deliver(color, motorPusher, motorConvBelt):
     #conveyor belt
-    distanceMove = relativeDistance - distances[color]
-    relativeDistance += distanceMove
+    motorConvBelt.set_limits(50, 200)
+    distanceMove = distances["relativeDistance"] - distances[color] * 110 # move to current - destination
+    distances["relativeDistance"] -= distanceMove
     motorConvBelt.set_position_relative(distanceMove)
+    sleep(1)
     
     #motor pusher
     motorPusher.set_limits(100, 130)

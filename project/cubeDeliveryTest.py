@@ -22,12 +22,17 @@ wait_ready_sensors()
 initDeliverySystem(motorPusher, motorConvBelt)
 
 try:
-        padRGB = getRGB(colorSensorPad)
-        sColor = getColorDetected(padRGB)
-        print(padRGB)
-        print(sColor)
+        #padRGB = getRGB(colorSensorPad)
+        #sColor = getColorDetected(padRGB)
+        #print(padRGB)
+        #print(sColor)
 
-        deliver(sColor, motorPusher, motorConvBelt)
+        deliver("yellow", motorPusher, motorConvBelt)
+        deliver("green", motorPusher, motorConvBelt)
+        deliver("red", motorPusher, motorConvBelt)
+        deliver("purple", motorPusher, motorConvBelt)
+        deliver("blue", motorPusher, motorConvBelt)
+        deliver("orange", motorPusher, motorConvBelt)
 
         sleep(1)
         
