@@ -17,6 +17,7 @@ motorR = Motor("B")          # Motor port B (right)
 motorPusher = Motor("A")        # Motor port A
 motorConvBelt = Motor("D")        # Motor port D
 colorSensorPath = EV3ColorSensor(1) # Color sensor 
+colorSensorPad = EV3ColorSensor(3)
 emergencyStop = TouchSensor(2)   
 
 wait_ready_sensors()
@@ -34,12 +35,18 @@ try:
         print(pathRGB)
         print(getColorDetected(pathRGB))
 
+        padRGB = getRGB(colorSensorPad)
+        sColorPad = getColorDetected(padRGB)
+
         if not is_in_delivery():
             if sColor == "red" or sColor == "blue" or sColor == "white":
                 adjustHeading(sColor, motorL, motorR)
 
             if sColor == "green":
-
+                stopMotors(motorL, motorR)
+                deliver(sColorPad, motorPusher, motorConvBelt)
+                startMotors(motorL, motorR)
+                sleep(0.5) #get out of green zone
 
 
         if is_in_delivery():
