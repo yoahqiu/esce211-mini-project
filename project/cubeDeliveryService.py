@@ -10,6 +10,8 @@ distances = {
     "purple" : 5
 }
 
+in_delivery = False
+
 def initDeliverySystem(motorPusher, motorConvBelt):
     offset = motorPusher.get_position()
     motorPusher.offset_encoder(offset)
@@ -20,7 +22,7 @@ def initDeliverySystem(motorPusher, motorConvBelt):
 def deliver(color, motorPusher, motorConvBelt):
     #conveyor belt
     motorConvBelt.set_limits(50, 200)
-    distanceMove = distances["relativeDistance"] - distances[color] * 110 # move to current - destination
+    distanceMove = distances["relativeDistance"] - distances[color] * 100 # move to current - destination
     distances["relativeDistance"] -= distanceMove
     motorConvBelt.set_position_relative(distanceMove)
     sleep(1)
@@ -28,10 +30,16 @@ def deliver(color, motorPusher, motorConvBelt):
     #motor pusher
     motorPusher.set_limits(100, 130)
     sleep(1)
-    motorPusher.set_position_relative(70)
+    motorPusher.set_position_relative(80)
     sleep(1)
-    motorPusher.set_position_relative(-70)
+    motorPusher.set_position_relative(-80)
     sleep(1)
+
+def set_delivery(state):
+    in__delivery = state
+
+def is_in_delivery():
+    return in_delivery
 
 
     
