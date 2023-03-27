@@ -24,11 +24,11 @@ print("all forward!")
 
 while (True):
 
-    pathRGB = getRBG(colorSensorPath)
+    pathRGB = getRGB(colorSensorPath)
     sColorPath = getColorDetected(pathRGB)
     print("pathRGB: " + str(pathRGB))
 
-    padRGB = getRBG(colorSensorPad)
+    padRGB = getRGB(colorSensorPad)
     sColorPad = getColorDetected(padRGB)
     print("padRGB: " + str(padRGB))
     
