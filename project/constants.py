@@ -2,8 +2,8 @@
 tresholdBlue = 0.5
 tresholdRed = 0.85
 tresholdGreen = 0.8
-normalDps = 300
-slowDownFactor = 0.55
+normalDps = 200
+slowDownFactor = 0.30
 
 #color yellow constants
 yR1 = 0.70 #naming: colorToBeDetected + R/G/B + index
@@ -20,7 +20,7 @@ pR2 = 0.99
 pG1 = 0.10
 pG2 = 0.20
 pB1 = 0.10
-pB2 = 0.20
+pB2 = 0.30
 
 #color orange constants
 oR1 = 0.90

@@ -12,8 +12,8 @@ from pathTrackingService import *
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
-motorL = Motor("C")          # Motor port C (left)
-motorR = Motor("B")          # Motor port B (right)
+motorL = Motor("B")          # Motor port C (left)
+motorR = Motor("C")          # Motor port B (right)
 colorSensorPath = EV3ColorSensor(1) # Color sensor 
 emergencyStop = TouchSensor(2)   
 

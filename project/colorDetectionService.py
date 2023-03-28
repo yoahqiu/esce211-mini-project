@@ -6,9 +6,9 @@ from math import sqrt, e, pi
 from statistics import mean, stdev
 
 def getRGB(colorsensor):
-    sleep(1)
+    #sleep(1)
     aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
-    sleep(1)
+    #sleep(1)
     r, g, b = aColors[0], aColors[1], aColors[2]
 
     #normalize values between 0 and 1

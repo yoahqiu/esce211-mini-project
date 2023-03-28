@@ -12,8 +12,8 @@ from cubeDeliveryService import *
 #2. Change left/right steering vector 
 #3. Adjust motor speeds
 
-motorL = Motor("C")          # Motor port C (left)
-motorR = Motor("B")          # Motor port B (right)
+motorL = Motor("B")          # Motor port C (left)
+motorR = Motor("C")          # Motor port B (right)
 motorPusher = Motor("A")        # Motor port A
 motorConvBelt = Motor("D")        # Motor port D
 colorSensorPath = EV3ColorSensor(1) # Color sensor 
@@ -27,7 +27,7 @@ startMotors(motorL, motorR)
 initDeliverySystem(motorPusher, motorConvBelt)
 
 try:
-
+    set_delivery(False)
     while (True):
 
         pathRGB = getRGB(colorSensorPath)
@@ -42,7 +42,7 @@ try:
             if sColor == "red" or sColor == "blue" or sColor == "white":
                 adjustHeading(sColor, motorL, motorR)
 
-            if sColorPad == "green":
+            if ((sColorPad != "none") and (sColorPad != "white")):
                 stopMotors(motorL, motorR)
                 deliver(sColorPad, motorPusher, motorConvBelt)
                 startMotors(motorL, motorR)
@@ -50,18 +50,14 @@ try:
 
 
         if is_in_delivery():
-            deliver("yellow", motorPusher, motorConvBelt)
-            deliver("green", motorPusher, motorConvBelt)
-            deliver("red", motorPusher, motorConvBelt)
-            deliver("purple", motorPusher, motorConvBelt)
-            deliver("blue", motorPusher, motorConvBelt)
-            deliver("orange", motorPusher, motorConvBelt)
+            deliver(sColorPad, motorPusher, motorConvBelt)
             
 
 
 
 
         if emergencyStop.is_pressed():
+            print("stop pressed")
             raise BaseException
 
         sleep(0.1)

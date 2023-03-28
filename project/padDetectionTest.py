@@ -22,12 +22,12 @@ while (True):
     padRGB = getRGB(colorSensorPad)
     
     print(pathRGB)
-    print(getColorDetected(pathRGB))
+    print("path" + getColorDetected(pathRGB))
 
     print("///")
 
     print(padRGB)
-    print(getColorDetected(padRGB))
+    print("pad" + getColorDetected(padRGB))
 
     sleep(0.5)
 
