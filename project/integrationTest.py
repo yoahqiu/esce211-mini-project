@@ -42,7 +42,7 @@ try:
             if sColor == "red" or sColor == "blue" or sColor == "white":
                 adjustHeading(sColor, motorL, motorR)
 
-            if sColor == "green":
+            if sColorPad == "green":
                 stopMotors(motorL, motorR)
                 deliver(sColorPad, motorPusher, motorConvBelt)
                 startMotors(motorL, motorR)

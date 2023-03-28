@@ -37,7 +37,7 @@ try:
         
         adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
-        if (sColorPath == "green"): #delivery routine
+        if (sColorPad == "green"): #delivery routine
             print("delivery routine")
             stopMotors(motorL, motorR)
             deliver(sColorPad, motorPusher, motorConvBelt)
