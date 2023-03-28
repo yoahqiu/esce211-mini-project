@@ -39,13 +39,13 @@ try:
         
         adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
-        if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1): #delivery routine
+        if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1 and sColorPath == "white"): #delivery routine
             print("delivery routine")
             stopMotors(motorL, motorR)
             deliver(sColorPad, motorPusher, motorConvBelt)
             delivered.append(sColorPad)
-            startMotors(motorL, motorR)
-            sleep(0.5) #get out of green zone
+            reStartMotors(motorL, motorR)
+            #sleep(0.5) #get out of green zone
 
         if emergencyStop.is_pressed():
             raise BaseException
