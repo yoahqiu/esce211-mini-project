@@ -6,10 +6,17 @@ from math import sqrt, e, pi
 from statistics import mean, stdev
 
 def getRGB(colorsensor):
-    #sleep(1)
-    aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
-    #sleep(1)
-    r, g, b = aColors[0], aColors[1], aColors[2]
+    aR, aG, aB = [], [], []
+    i = 0
+    while i < 100:
+        aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
+        aR.append(aColors[0])
+        aG.append(aColors[1])
+        aB.append(aColors[2])
+        i += 1
+    r = medianFilter(aR)
+    g = medianFilter(aG)
+    b = medianFilter(aB)
 
     #normalize values between 0 and 1
     denominator = sqrt(r ** 2 + g ** 2 + b ** 2)
@@ -20,6 +27,10 @@ def getRGB(colorsensor):
     b = b/denominator
 
     return [r, g, b]
+
+def medianFilter(aA):
+    aA.sort()
+    return aA[len(aA)/2]
 
 def getColorDetected(aRGB):
     r, g, b = aRGB[0], aRGB[1], aRGB[2]
