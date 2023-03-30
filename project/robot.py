@@ -24,8 +24,10 @@ startMotors(motorL, motorR)
 initDeliverySystem(motorPusher, motorConvBelt)
 print("all forward!")
 
-delivered = []
 
+delivered = []
+prevColor = "none"
+currColor = "none"
 
 while (True):
 
@@ -35,23 +37,26 @@ while (True):
 
     padRGB = getRGB(colorSensorPad)
     sColorPad = getColorDetected(padRGB)
+    prevColor = currColor
+    currColor = sColorPad
     print("padRGB: " + str(padRGB))
     
     adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
     #180deg turn routine
     if (len(delivered) >= 6):
+        print("turning around")
         sleep(1)
         turnAround(motorL, motorR)
 
     #delivery routine
-    if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1 and sColorPath == "white"): #delivery routine
-        print("delivery routine")
-        stopMotors(motorL, motorR)
-        deliver(sColorPad, motorPusher, motorConvBelt)
-        delivered.append(sColorPad)
-        reStartMotors(motorL, motorR)
-        #sleep(0.5) #get out of green zone
+    if (prevColor != "white" and prevColor != "none" and currColor == "white"): #defect falling edge
+        if (delivered.count(sColorPad) < 1): #confirm color not yet delivered
+            print("delivery routine")
+            stopMotors(motorL, motorR)
+            deliver(prevColor, motorPusher, motorConvBelt)
+            delivered.append(sColorPad)
+            reStartMotors(motorL, motorR)
 
     if emergencyStop.is_pressed():
         raise BaseException
