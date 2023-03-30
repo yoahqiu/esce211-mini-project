@@ -25,7 +25,7 @@ def deliver(color, motorPusher, motorConvBelt):
     distanceMove = distances["relativeDistance"] - distances[color] * 100 # move to current - destination
     distances["relativeDistance"] -= distanceMove
     motorConvBelt.set_position_relative(distanceMove)
-    sleep(1)
+    sleep(abs(distanceMove)/200)
     
     #motor pusher
     motorPusher.set_limits(100, 130)

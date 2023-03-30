@@ -39,6 +39,12 @@ while (True):
     
     adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
+    #180deg turn routine
+    if (len(delivered) >= 6):
+        sleep(1)
+        turnAround(motorL, motorR)
+
+    #delivery routine
     if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1 and sColorPath == "white"): #delivery routine
         print("delivery routine")
         stopMotors(motorL, motorR)

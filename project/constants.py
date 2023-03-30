@@ -2,7 +2,7 @@
 tresholdBlue = 0.5
 tresholdRed = 0.85
 tresholdGreen = 0.8
-normalDps = 200
+normalDps = 150
 slowDownFactor = 0.30
 
 #color red constants
