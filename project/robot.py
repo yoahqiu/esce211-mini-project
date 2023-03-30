@@ -61,7 +61,7 @@ while (True):
             sleep(0.05)
             deliver(prevColor, motorPusher, motorConvBelt)
             delivered.append(prevColor)
-            reStartMotors(motorL, motorR)
+            startMotors(motorL, motorR)
             sleep(0.05)
 
     if emergencyStop.is_pressed():
