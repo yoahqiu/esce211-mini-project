@@ -22,21 +22,19 @@ wait_ready_sensors()
 
 startMotors(motorL, motorR)
 
-try:
-    while (True):
+while (True):
 
-        pathRGB = getRGB(colorSensorPath)
-        sColor = getColorDetected(pathRGB)
-        print(pathRGB)
-        print(getColorDetected(pathRGB))
-    
-        adjustHeading(sColor, motorL, motorR)
-        if emergencyStop.is_pressed():
-            raise BaseException
+    pathRGB = getRGB(colorSensorPath)
+    sColor = getColorDetected(pathRGB)
+    print(pathRGB)
+    print(getColorDetected(pathRGB))
 
-        sleep(0.1)
-except BaseException:
-    reset_brick()
+    adjustHeading(sColor, motorL, motorR)
+    if emergencyStop.is_pressed():
+        sleep(1)
+        turnAround(motorL, motorR)
+
+    sleep(0.1)
 
 
 

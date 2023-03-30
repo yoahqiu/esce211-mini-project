@@ -1,5 +1,5 @@
 
-from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor
+from utils.brick import wait_ready_sensors, TouchSensor, Motor, EV3ColorSensor, reset_brick
 from utils.sound import Sound
 from time import sleep
 
@@ -30,3 +30,5 @@ slowDownFactor = 0.60
 
 motorL.set_dps(0)
 motorR.set_dps(0)
+
+reset_brick()

@@ -1,4 +1,5 @@
 from constants import *
+from time import sleep
 
 dpsLeft = 0
 dpsRight = 0
@@ -39,7 +40,7 @@ def adjustHeading(sColor, motorL, motorR):
 def turnAround(motorL, motorR):
     motorL.set_dps(0)
     motorR.set_dps(normalDps)
-    sleep(1)
+    sleep(turnTime)
     flipHeadingPolarity()
     startMotors(motorL, motorR)
     
