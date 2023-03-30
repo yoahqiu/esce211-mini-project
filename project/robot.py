@@ -33,13 +33,13 @@ while (True):
 
     pathRGB = getRGB(colorSensorPath)
     sColorPath = getColorDetected(pathRGB)
-    print("pathRGB: " + str(pathRGB))
+    #print("pathRGB: " + str(pathRGB))
 
     padRGB = getRGB(colorSensorPad)
     sColorPad = getColorDetected(padRGB)
     prevColor = currColor
     currColor = sColorPad
-    print("padRGB: " + str(padRGB))
+    #print("padRGB: " + str(padRGB))
     
     adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
@@ -51,17 +51,20 @@ while (True):
 
     #delivery routine
     if (prevColor != "white" and prevColor != "none" and currColor == "white"): #defect falling edge
-        if (delivered.count(sColorPad) < 1): #confirm color not yet delivered
+        if (delivered.count(prevColor) < 1): #confirm color not yet delivered
             print("delivery routine")
+            print("deliver" + prevColor)
             stopMotors(motorL, motorR)
+            sleep(0.1)
             deliver(prevColor, motorPusher, motorConvBelt)
             delivered.append(sColorPad)
             reStartMotors(motorL, motorR)
+            sleep(0.1)
 
     if emergencyStop.is_pressed():
         raise BaseException
 
-    sleep(0.05)
+    sleep(0.1)
 
 
 

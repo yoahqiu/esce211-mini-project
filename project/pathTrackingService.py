@@ -25,12 +25,12 @@ def adjustHeading(sColor, motorL, motorR):
     #if detect too much blue, turn left
     if (sColor == aLineColors[0]):
         motorL.set_dps(motorL.get_dps() * slowDownFactor)
-        motorR.set_dps(normalDps/2)
+        motorR.set_dps(normalDps)
 
     #if detect too red, turn right
     if (sColor == aLineColors[1]):
         motorR.set_dps(motorR.get_dps() * slowDownFactor)
-        motorL.set_dps(normalDps/2)
+        motorL.set_dps(normalDps)
         
     #if white, go straight
     if (sColor == "white"):

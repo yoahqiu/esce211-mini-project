@@ -8,7 +8,7 @@ from statistics import mean, stdev
 def getRGB(colorsensor):
     aR, aG, aB = [], [], []
     i = 0
-    while i < 100:
+    while i < 10:
         aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
         if (aColors[0] == None or aColors[1] == None or aColors[2] == None):
             continue
