@@ -26,6 +26,7 @@ print("all forward!")
 
 
 delivered = []
+prevColors = ["none"] * 10
 prevColor = "none"
 currColor = "none"
 
@@ -37,7 +38,9 @@ while (True):
 
     padRGB = getRGB(colorSensorPad)
     sColorPad = getColorDetected(padRGB)
-    prevColor = currColor
+    prevColors.append(sColorPad)
+    prevColor = getMostPopularColor(prevColors)
+    prevColors.pop(0)
     currColor = sColorPad
     #print("padRGB: " + str(padRGB))
     
@@ -55,11 +58,11 @@ while (True):
             print("delivery routine")
             print("deliver" + prevColor)
             stopMotors(motorL, motorR)
-            sleep(0.1)
+            sleep(0.05)
             deliver(prevColor, motorPusher, motorConvBelt)
-            delivered.append(sColorPad)
+            delivered.append(prevColor)
             reStartMotors(motorL, motorR)
-            sleep(0.1)
+            sleep(0.05)
 
     if emergencyStop.is_pressed():
         raise BaseException

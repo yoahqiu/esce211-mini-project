@@ -26,8 +26,8 @@ while (True):
 
     pathRGB = getRGB(colorSensorPath)
     sColor = getColorDetected(pathRGB)
-    print(pathRGB)
-    print(getColorDetected(pathRGB))
+    #print(pathRGB)
+    print(sColor)
 
     adjustHeading(sColor, motorL, motorR)
     if emergencyStop.is_pressed():

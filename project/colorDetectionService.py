@@ -3,7 +3,10 @@ from constants import *
 from time import sleep
 from ast import literal_eval
 from math import sqrt, e, pi
-from statistics import mean, stdev
+from statistics import mean, stdev, mode
+
+def getMostPopularColor(aA):
+    return max(set(aA), key=aA.count)
 
 def getRGB(colorsensor):
     aR, aG, aB = [], [], []
