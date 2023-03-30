@@ -10,6 +10,8 @@ def getRGB(colorsensor):
     i = 0
     while i < 100:
         aColors = colorsensor.get_rgb() #Hungarian notation, array of [R, G, B] colors
+        if (aColors[0] == None or aColors[1] == None or aColors[2] == None):
+            continue
         aR.append(aColors[0])
         aG.append(aColors[1])
         aB.append(aColors[2])
@@ -30,7 +32,7 @@ def getRGB(colorsensor):
 
 def medianFilter(aA):
     aA.sort()
-    return aA[len(aA)/2]
+    return aA[int(len(aA)/2)]
 
 def getColorDetected(aRGB):
     r, g, b = aRGB[0], aRGB[1], aRGB[2]
@@ -51,7 +53,7 @@ def getColorDetected(aRGB):
         return "blue"
 
     #if detect too red, turn right
-    elif (r > tresholdRed):
+    elif (r > rR1 and r < rR2 and g > rG1 and g < rG2 and b > rB1 and b < rB2):
         return "red"
 
     #if detect green, launch cube delivery routine

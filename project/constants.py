@@ -5,6 +5,14 @@ tresholdGreen = 0.8
 normalDps = 200
 slowDownFactor = 0.30
 
+#color red constants
+rR1 = 0.85
+rR2 = 1
+rG1 = 0.0
+rG2 = 0.20
+rB1 = 0.0
+rB2 = 0.10
+
 #color yellow constants
 yR1 = 0.70 #naming: colorToBeDetected + R/G/B + index
 yR2 = 0.80

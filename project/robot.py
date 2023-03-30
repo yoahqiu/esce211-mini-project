@@ -26,34 +26,31 @@ print("all forward!")
 
 delivered = []
 
-try:
-    while (True):
 
-        pathRGB = getRGB(colorSensorPath)
-        sColorPath = getColorDetected(pathRGB)
-        print("pathRGB: " + str(pathRGB))
+while (True):
 
-        padRGB = getRGB(colorSensorPad)
-        sColorPad = getColorDetected(padRGB)
-        print("padRGB: " + str(padRGB))
-        
-        adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
+    pathRGB = getRGB(colorSensorPath)
+    sColorPath = getColorDetected(pathRGB)
+    print("pathRGB: " + str(pathRGB))
 
-        if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1 and sColorPath == "white"): #delivery routine
-            print("delivery routine")
-            stopMotors(motorL, motorR)
-            deliver(sColorPad, motorPusher, motorConvBelt)
-            delivered.append(sColorPad)
-            reStartMotors(motorL, motorR)
-            #sleep(0.5) #get out of green zone
+    padRGB = getRGB(colorSensorPad)
+    sColorPad = getColorDetected(padRGB)
+    print("padRGB: " + str(padRGB))
+    
+    adjustHeading(sColorPath, motorL, motorR) #control loop that ensure the robot is within the path
 
-        if emergencyStop.is_pressed():
-            raise BaseException
+    if ((sColorPad != "none") and (sColorPad != "white") and delivered.count(sColorPad) < 1 and sColorPath == "white"): #delivery routine
+        print("delivery routine")
+        stopMotors(motorL, motorR)
+        deliver(sColorPad, motorPusher, motorConvBelt)
+        delivered.append(sColorPad)
+        reStartMotors(motorL, motorR)
+        #sleep(0.5) #get out of green zone
 
-        sleep(0.05)
+    if emergencyStop.is_pressed():
+        raise BaseException
 
-except (BaseException) as err:
-    print(err)
-    reset_brick()
+    sleep(0.05)
+
 
 
