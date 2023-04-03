@@ -23,12 +23,12 @@ def stopMotors(motorL, motorR):
 def adjustHeading(sColor, motorL, motorR):
     if sColor == "orange": #red and orange are too similar in navigation
         sColor = "red"
-
+        
     #if detect too much blue, turn left
     if (sColor == aLineColors[0]):
         motorL.set_dps(motorL.get_dps() * slowDownFactor)
         motorR.set_dps(normalDps)
-
+        
     #if detect too red, turn right
     if (sColor == aLineColors[1]):
         motorR.set_dps(motorR.get_dps() * slowDownFactor)
@@ -36,6 +36,10 @@ def adjustHeading(sColor, motorL, motorR):
         
     #if white, go straight
     if (sColor == "white"):
+        motorL.set_dps(normalDps)
+        motorR.set_dps(normalDps)
+        
+    if (sColor == "green"):
         motorL.set_dps(normalDps)
         motorR.set_dps(normalDps)
         

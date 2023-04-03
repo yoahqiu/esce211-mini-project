@@ -22,7 +22,7 @@ def initDeliverySystem(motorPusher, motorConvBelt):
 def deliver(color, motorPusher, motorConvBelt):
     #conveyor belt
     motorConvBelt.set_limits(50, 200)
-    distanceMove = distances["relativeDistance"] - distances[color] * 100 # move to current - destination
+    distanceMove = distances["relativeDistance"] - distances[color] * 93 # move to current - destination
     distances["relativeDistance"] -= distanceMove
     motorConvBelt.set_position_relative(distanceMove)
     sleep(abs(distanceMove)/200)
@@ -30,9 +30,9 @@ def deliver(color, motorPusher, motorConvBelt):
     #motor pusher
     motorPusher.set_limits(100, 130)
     sleep(1)
-    motorPusher.set_position_relative(80)
+    motorPusher.set_position_relative(65)
     sleep(1)
-    motorPusher.set_position_relative(-80)
+    motorPusher.set_position_relative(-65)
     sleep(1)
 
 def set_delivery(state):
