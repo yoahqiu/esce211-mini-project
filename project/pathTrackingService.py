@@ -1,12 +1,14 @@
 from constants import *
 from time import sleep
 
-dpsLeft = 0
-dpsRight = 0
+dpsLeft = normalDps
+dpsRight = normalDps
 greenCounter = 0
 aLineColors = ["blue", "red"]
 
 def startMotors(motorL, motorR):
+    dpsLeft = normalDps
+    dpsRight = normalDps
     motorL.set_dps(normalDps)
     motorR.set_dps(normalDps)
     
@@ -26,22 +28,25 @@ def adjustHeading(sColor, motorL, motorR):
         
     #if detect too much blue, turn left
     if (sColor == aLineColors[0]):
-        motorL.set_dps(motorL.get_dps() * slowDownFactor)
-        motorR.set_dps(normalDps)
+        dpsLeft = motorL.get_dps() * slowDownFactor
+        dpsRight = normalDps
+        motorL.set_dps(dpsLeft)
+        motorR.set_dps(dpsRight)
         
     #if detect too red, turn right
     if (sColor == aLineColors[1]):
-        motorR.set_dps(motorR.get_dps() * slowDownFactor)
-        motorL.set_dps(normalDps)
+        dpsRight = motorL.get_dps() * slowDownFactor
+        dpsLeft = normalDps
+        motorR.set_dps(dpsRight)
+        motorL.set_dps(dpsLeft)
         
     #if white, go straight
     if (sColor == "white"):
         motorL.set_dps(normalDps)
         motorR.set_dps(normalDps)
         
-    if (sColor == "green"):
-        motorL.set_dps(normalDps)
-        motorR.set_dps(normalDps)
+    if (sColor == "green"):  
+        reStartMotors(motorL, motorR)
         
 def turnAround(motorL, motorR):
     motorL.set_dps(0)
