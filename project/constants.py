@@ -5,7 +5,7 @@ tresholdGreen = 0.8
 normalDps = 150
 slowDownFactor = 60/normalDps
 slowDownFactor2 = 1
-turnTime = 1200.05/(normalDps + 24.42)
+turnTime = 400.05/(normalDps + 24.42)
 
 #color red constants
 rR1 = 0.85

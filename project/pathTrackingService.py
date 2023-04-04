@@ -49,8 +49,8 @@ def adjustHeading(sColor, motorL, motorR):
         reStartMotors(motorL, motorR)
         
 def turnAround(motorL, motorR):
-    motorL.set_dps(0)
-    motorR.set_dps(normalDps)
+    motorL.set_dps(normalDps)
+    motorR.set_dps(-normalDps)
     sleep(turnTime)
     flipHeadingPolarity()
     startMotors(motorL, motorR)
