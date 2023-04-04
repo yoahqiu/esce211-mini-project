@@ -112,7 +112,7 @@ while (True):
             print("in delivery for too long")
             in_delivery = False
                 
-    print(is_fetching)
+    #print(is_fetching)
 
     if emergencyStop.is_pressed():
         raise BaseException

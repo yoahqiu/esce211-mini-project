@@ -17,8 +17,8 @@ rB2 = 0.10
 
 #color yellow constants
 yR1 = 0.70 #naming: colorToBeDetected + R/G/B + index
-yR2 = 0.80
-yG1 = 0.60
+yR2 = 0.85
+yG1 = 0.50
 yG2 = 0.70
 yB1 = 0.00
 yB2 = 0.10
