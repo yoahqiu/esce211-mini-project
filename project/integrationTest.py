@@ -16,7 +16,7 @@ motorL = Motor("B")          # Motor port C (left)
 motorR = Motor("C")          # Motor port B (right)
 motorPusher = Motor("A")        # Motor port A
 motorConvBelt = Motor("D")        # Motor port D
-colorSensorPath = EV3ColorSensor(1) # Color sensor 
+colorSensorPath = EV3ColorSensor(4) # Color sensor 
 colorSensorPad = EV3ColorSensor(3)
 emergencyStop = TouchSensor(2)   
 

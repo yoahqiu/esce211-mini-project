@@ -14,6 +14,7 @@ colorSensorPad = EV3ColorSensor(3) # Color sensor fpr the pad
 emergencyStop = TouchSensor(2)
 
 wait_ready_sensors()
+start = motorConvBelt.get_position()
 
 #1. Identify the color mix
 #2. Change left/right steering vector 
@@ -28,11 +29,21 @@ try:
         #print(sColor)
 
         deliver("yellow", motorPusher, motorConvBelt)
-        deliver("green", motorPusher, motorConvBelt)
-        deliver("red", motorPusher, motorConvBelt)
+        sleep(1)
         deliver("purple", motorPusher, motorConvBelt)
+        sleep(1)
+        #deliver("red", motorPusher, motorConvBelt)
+        deliver("green", motorPusher, motorConvBelt)
+        sleep(1)
+        #deliver("red", motorPusher, motorConvBelt)
         deliver("blue", motorPusher, motorConvBelt)
+        sleep(1)
+        #deliver("red", motorPusher, motorConvBelt)
+        deliver("red", motorPusher, motorConvBelt)
+        sleep(1)
+        #deliver("red", motorPusher, motorConvBelt)
         deliver("orange", motorPusher, motorConvBelt)
+        #deliver("red", motorPusher, motorConvBelt)
 
         sleep(1)
         

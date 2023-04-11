@@ -29,24 +29,27 @@ def adjustHeading(sColor, motorL, motorR):
     #if detect too much blue, turn left
     if (sColor == aLineColors[0]):
         dpsLeft = motorL.get_dps() * slowDownFactor
-        dpsRight = normalDps
+        dpsRight = normalDps*1.2
         motorL.set_dps(dpsLeft)
         motorR.set_dps(dpsRight)
+        #print("adjusting left")
+        sleep(0.2)
         
     #if detect too red, turn right
     if (sColor == aLineColors[1]):
         dpsRight = motorL.get_dps() * slowDownFactor
-        dpsLeft = normalDps
+        dpsLeft = normalDps*1.2
         motorR.set_dps(dpsRight)
         motorL.set_dps(dpsLeft)
+        #print("adjusting right")
+        sleep(0.2)
         
     #if white, go straight
     if (sColor == "white"):
         motorL.set_dps(normalDps)
         motorR.set_dps(normalDps)
         
-    if (sColor == "green"):  
-        reStartMotors(motorL, motorR)
+
         
 def turnAround(motorL, motorR):
     motorL.set_dps(normalDps)

@@ -17,7 +17,7 @@ from statistics import mean, stdev
 
 motorL = Motor("C")          # Motor port A (left)
 motorR = Motor("B")          # Motor port B (right)
-colorSensorPath = EV3ColorSensor(1)   # Color sensor 
+colorSensorPath = EV3ColorSensor(4)   # Color sensor 
 
 wait_ready_sensors()
 
@@ -30,5 +30,8 @@ slowDownFactor = 0.60
 
 motorL.set_dps(0)
 motorR.set_dps(0)
+print("stop")
+
+
 
 reset_brick()

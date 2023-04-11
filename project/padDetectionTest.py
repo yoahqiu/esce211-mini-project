@@ -10,7 +10,7 @@ from colorDetectionService import *
 
 motorL = Motor("C")          # Motor port C (left)
 motorR = Motor("B")          # Motor port B (right)
-colorSensorPath = EV3ColorSensor(1)   # Color sensor main
+colorSensorPath = EV3ColorSensor(4)   # Color sensor main
 colorSensorPad = EV3ColorSensor(3)
 
 wait_ready_sensors()
